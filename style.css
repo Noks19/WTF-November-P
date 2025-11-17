@@ -52,13 +52,40 @@ input {
   font-size: 16px;
 }
 
+.button-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.help-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9fafb;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.help-icon {
+  width: 20px;
+  height: 20px;
+  
+}
+
 .primary-btn {
-  width: 100%;
+  flex: 2;
   padding: 12px;
   background: #fac200;
   border: none;
-  border-radius: 8px;
-  font-size: 17px;
+  border-radius: 10px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
 }
