@@ -1,3 +1,64 @@
-img {
-    
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fefefe;
+  font-family: "Inter", sans-serif;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  margin: 20px 0;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.tab.active {
+  background: #fff;
+  border: 2px solid #ccc;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  text-align: left;
+  margin: 10px 0 5px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  background: #fac200;
+  border: none;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
 }
