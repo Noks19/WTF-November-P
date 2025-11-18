@@ -16,6 +16,9 @@ loginTab.addEventListener("click", () =>{
 
     title.textContent = "Welcome Back!";
     subtitle.textContent = "Enter your details to access your account";
+
+
+    resetForm();
 });
 
 signupTab.addEventListener("click",() => {
@@ -27,4 +30,7 @@ signupTab.addEventListener("click",() => {
 
     title.textContent = "Join TaskMaster";
     subtitle.textContent = "Create an account to boost your productivity";
+
+    resetForm();
 })
+
