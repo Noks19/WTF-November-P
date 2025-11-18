@@ -14,6 +14,7 @@ body {
   background: transparent;
   font-family: "Inter", sans-serif;
   color: #333;
+  overflow: hidden;
 }
 
 .card {
@@ -254,25 +255,34 @@ input:focus {
 .cursor {
   position: absolute;
   right: 10%;
-  top: 50%;
-  width: 20px;
-  height: 30px;
-  border: 2px solid #333;
-  border-radius: 10px;
+  top: 30%;
+  width: 30px;
+  height: 40px;
   z-index: 2;
   animation: bounce 2s infinite;
+}
+
+.cursor::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 25px solid #3b82f6;
 }
 
 cursor::after {
   content: "";
   position: absolute;
-  top: 5px;
-  left: 7px;
-  width: 2px;
-  height: 8px;
-  background: #333;
-  border-radius: 1px;
-  animation: blink 1s infinite;
+  bottom: 0;
+  left: 10px;
+  width: 10px;
+  height: 15px;
+  background: #3b82f6;
+  border-radius: 2px 2px 0 0;
 }
 
 @keyframes bounce {
@@ -288,16 +298,6 @@ cursor::after {
   }
   60% {
     transform: translateY(-10px);
-  }
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
   }
 }
 
