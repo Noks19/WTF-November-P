@@ -185,7 +185,7 @@ input:focus {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("background.svg");
+  background-image: url("Assets/images/background.svg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

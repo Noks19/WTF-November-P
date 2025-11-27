@@ -7,6 +7,10 @@ const signupForm = document.getElementById("signup-form");
 const title = document.getElementById("form-title");
 const subtitle = document.getElementById("form-subtitle");
 
+function resetForm() {
+  document.querySelectorAll('input').forEach(input => input.value = '');
+}
+
 loginTab.addEventListener("click", () => {
   loginTab.classList.add("active");
   signupTab.classList.remove("active");
@@ -32,3 +36,34 @@ signupTab.addEventListener("click", () => {
 
   resetForm();
 });
+
+//SIGNUP LOGIC
+
+const signupBtn = document.getElementById('signupBtn');
+signupBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById('signup-name').value;
+  const email = document.getElementById('signup-email').value;
+  const password = document.getElementById('signup-password').value;
+
+  if (!name || !email || !password) {
+    alert('Please fill in all fields');
+    return;
+  }
+
+  if(password.lenght < 6) {
+    alert('Password must be at least 6 characters');
+    return;
+  }
+
+  const user = { name, email, password };
+  localStorage.setItem('tastmasterUser', JSON.stringify(user));
+
+  alert('Account created successfully! You can now log in.');
+  loginTab.click();
+});
+
+//LOGIN LOGIC
+
+const
