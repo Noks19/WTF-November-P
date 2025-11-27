@@ -8,7 +8,7 @@ const title = document.getElementById("form-title");
 const subtitle = document.getElementById("form-subtitle");
 
 function resetForm() {
-  document.querySelectorAll('input').forEach(input => input.value = '');
+  document.querySelectorAll("input").forEach((input) => (input.value = ""));
 }
 
 loginTab.addEventListener("click", () => {
@@ -39,31 +39,51 @@ signupTab.addEventListener("click", () => {
 
 //SIGNUP LOGIC
 
-const signupBtn = document.getElementById('signupBtn');
-signupBtn.addEventListener('click', (e) => {
+const signupBtn = document.getElementById("signupBtn");
+signupBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  const name = document.getElementById('signup-name').value;
-  const email = document.getElementById('signup-email').value;
-  const password = document.getElementById('signup-password').value;
+  const name = document.getElementById("signup-name").value;
+  const email = document.getElementById("signup-email").value;
+  const password = document.getElementById("signup-password").value;
 
   if (!name || !email || !password) {
-    alert('Please fill in all fields');
+    alert("Please fill in all fields");
     return;
   }
 
-  if(password.lenght < 6) {
-    alert('Password must be at least 6 characters');
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters");
     return;
   }
 
   const user = { name, email, password };
-  localStorage.setItem('tastmasterUser', JSON.stringify(user));
+  localStorage.setItem("taskmasterUser", JSON.stringify(user));
 
-  alert('Account created successfully! You can now log in.');
+  alert("Account created successfully! You can now log in.");
   loginTab.click();
 });
 
 //LOGIN LOGIC
 
-const
+const loginBtn = document.getElementById("loginBtn");
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  const savedUser = JSON.parse(localStorage.getItem("taskmasterUser"));
+
+  if (!savedUser) {
+    alert("No account found. Please create one.");
+    return;
+  }
+
+  if (email === savedUser.email && password === savedUser.password) {
+    alert("Login successful! Redirecting...");
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Incorrect email or password.");
+  }
+});
