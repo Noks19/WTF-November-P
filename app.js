@@ -83,18 +83,34 @@ loginBtn.addEventListener("click", (e) => {
   if (email === savedUser.email && password === savedUser.password) {
     alert("Login successful! Redirecting...");
 
+    const initials = savedUser.name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+
     sessionStorage.setItem(
       "currentUser",
       JSON.stringify({
         name: savedUser.name,
         email: savedUser.email,
-        initials: savedUser.name
-          .split(" ")
-          .map((n) => n[0].join("").toUpperCase()),
+        initials: initials,
       })
     );
 
-    window.location.href = "dashboard.html";
+    console.log("User stored in session", {
+      name: savedUser.name,
+      email: savedUser.email,
+      initials: initials,
+    });
+
+    try {
+      window.location.href = "dashboard.html";
+    } catch (error) {
+      console.error("Redirect failed:", error);
+      alert("Redirect failed. Please check if dashboard.html exists.");
+    }
   } else {
     alert("Incorrect email or password.");
   }

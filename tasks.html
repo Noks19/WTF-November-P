@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+        <header>
+            <h1>Task Manager</h1>
+            <div class="subtitle">Manage and track your tasks</div>
+        </header>
+        
+        <div class="content">
+            <div class="sidebar">
+                <div class="nav-item active">
+                    <i class="fas fa-tasks"></i>
+                    <span>My Tasks</span>
+                </div>
+                <div class="ai-summary">
+                    <h3>AI Summary</h3>
+                    <p id="ai-summary-text">You have 2 active tasks. Focus on completing "Prepare presentation" today.</p>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <div class="section-title">
+                    <i class="fas fa-list-check"></i>
+                    <span>Task Management</span>
+                </div>
+                
+                <div class="task-stats">
+                    <div class="stat-box">
+                        <div class="stat-value" id="active-count">2</div>
+                        <div class="stat-label">Active tasks</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="completed-count">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                </div>
+                
+                <div class="tasks-container">
+                    <div class="task-tabs">
+                        <div class="task-tab active" data-tab="active">Active tasks</div>
+                        <div class="task-tab" data-tab="completed">Completed</div>
+                    </div>
+                    
+                    <div class="task-list active" id="active-tasks">
+                        <!-- Active tasks will appear here -->
+                        <div class="task-item">
+                            <div class="task-checkbox">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="task-text">Prepare presentation for Monday meeting</div>
+                            <div class="task-date">Today</div>
+                        </div>
+                        
+                        <div class="task-item">
+                            <div class="task-checkbox">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="task-text">Review quarterly reports</div>
+                            <div class="task-date">Tomorrow</div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-list" id="completed-tasks">
+                        <!-- Completed tasks will appear here -->
+                    </div>
+                    
+                    <div class="empty-state" id="empty-active">
+                        <i class="fas fa-tasks"></i>
+                        <h3>No active tasks</h3>
+                        <p>Click "Add Task" to create your first task.</p>
+                        <button class="btn" id="add-first-task">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Task</span>
+                        </button>
+                    </div>
+                    
+                    <div class="empty-state" id="empty-completed" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>No completed tasks</h3>
+                        <p>Complete some tasks to see them here.</p>
+                    </div>
+                </div>
+                
+                <div class="notable-section" style="margin-top: 32px;">
+                    <div class="section-title">
+                        <i class="fas fa-star"></i>
+                        <span>Notable</span>
+                    </div>
+                    <div class="empty-state" style="padding: 20px; background-color: #f9fafc; border-radius: 10px;">
+                        <p>Click "Add Task" to create your first task.</p>
+                    </div>
+                </div>
+                
+                <div class="additional-section" style="margin-top: 32px; text-align: center;">
+                    <button class="btn" id="add-task-btn">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Task</span>
+                    </button>
+                </div>
+                
+                <!-- Add Task Form -->
+                <div class="add-task-form" id="add-task-form">
+                    <div class="form-title">Add New Task</div>
+                    <div class="form-group">
+                        <label for="task-title">Task Title</label>
+                        <input type="text" id="task-title" class="form-control" placeholder="Enter task title">
+                    </div>
+                    <div class="form-group">
+                        <label for="task-due">Due Date</label>
+                        <select id="task-due" class="form-control">
+                            <option value="Today">Today</option>
+                            <option value="Tomorrow">Tomorrow</option>
+                            <option value="This Week">This Week</option>
+                            <option value="Next Week">Next Week</option>
+                            <option value="No Date">No Date</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-secondary" id="cancel-task">Cancel</button>
+                        <button class="btn" id="save-task">Save Task</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</html>

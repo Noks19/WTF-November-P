@@ -16,58 +16,74 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
-  // Set user info
-  document.getElementById("displayName").textContent = "Nokuthula Mishali";
-  document.getElementById("user-name").textContent = "Nokuthula Mishali";
-  document.getElementById("user-email").textContent = "nomiboods@gmail.com";
 });
 
 // dashboard.js - Main Dashboard Functionality
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("Dashboard loaded");
+
   // Check if user is logged in
   const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  console.log("Current user from session", currentUser);
+
   if (!currentUser) {
+    console.log("No user found in sessionStorage");
     alert("Please log in first");
     window.location.href = "index.html";
     return;
   }
+
+  console.log("User found:", currentUser);
 
   // Set user info
   const userNameElement = document.getElementById("userName");
   const userInitialsElement = document.getElementById("userInitials");
   const userEmailElement = document.getElementById("userEmail");
 
-  if (userNameElement) userNameElement.textContent = currentUser.name;
-  if (userInitialsElement)
-    userInitialsElement.textContent = currentUser.initials;
-  if (userEmailElement) userEmailElement.textContent = currentUser.email;
+  console.log("Elements found:", {
+    userNameElement: !!userNameElement,
+    userInitialsElement: !!userInitialsElement,
+    userEmailElement: !!userEmailElement,
+  });
 
-  // Initialize stats from localStorage
-  const userStats = JSON.parse(
-    localStorage.getItem(`stats_${currentUser.email}`)
-  ) || {
-    totalTasks: 0,
-    completedTasks: 0,
-    pendingTasks: 0,
-    overdueTasks: 0,
-  };
-
-  // Update stats display
-  updateStatsDisplay(userStats);
-
-  // Logout functionality
-  const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", function () {
-      sessionStorage.removeItem("currentUser");
-      window.location.href = "index.html";
-    });
+  if (userNameElement) {
+    userNameElement.textContent = currentUser.name;
+    console.log("Set username to:", currentUser.name);
+  }
+  if (userInitialsElement) {
+    userInitialsElement.textContent = currentUser.initials || "U";
+    console.log("Set initials to:", currentUser.initials);
   }
 
-  // Load recent tasks
-  loadRecentTasks(currentUser.email);
+  if (userEmailElement) {
+    userEmailElement.textContent = currentUser.email;
+    console.log("Set email to:", currentUser.email);
+  }
 });
+// Initialize stats from localStorage
+const userStats = JSON.parse(
+  localStorage.getItem(`stats_${currentUser.email}`)
+) || {
+  totalTasks: 0,
+  completedTasks: 0,
+  pendingTasks: 0,
+  overdueTasks: 0,
+};
+
+// Update stats display
+updateStatsDisplay(userStats);
+
+// Logout functionality
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", function () {
+    sessionStorage.removeItem("currentUser");
+    window.location.href = "index.html";
+  });
+}
+
+// Load recent tasks
+loadRecentTasks(currentUser.email);
 
 function updateStatsDisplay(stats) {
   const elements = {
