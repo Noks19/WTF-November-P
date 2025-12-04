@@ -82,6 +82,18 @@ loginBtn.addEventListener("click", (e) => {
 
   if (email === savedUser.email && password === savedUser.password) {
     alert("Login successful! Redirecting...");
+
+    sessionStorage.setItem(
+      "currentUser",
+      JSON.stringify({
+        name: savedUser.name,
+        email: savedUser.email,
+        initials: savedUser.name
+          .split(" ")
+          .map((n) => n[0].join("").toUpperCase()),
+      })
+    );
+
     window.location.href = "dashboard.html";
   } else {
     alert("Incorrect email or password.");
